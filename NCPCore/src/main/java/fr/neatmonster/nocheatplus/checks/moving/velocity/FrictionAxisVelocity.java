@@ -107,7 +107,6 @@ public class FrictionAxisVelocity {
             // TODO: 0.001 can be stretched somewhere else, most likely...
             // TODO: Somehow use tick here too (actCount, valCount)?
             if (vel.valCount <= 0 || Math.abs(vel.value) <= minValue) {
-                //              System.out.prsintln("Invalidate active: " + vel);
                 it.remove();
             }
         }

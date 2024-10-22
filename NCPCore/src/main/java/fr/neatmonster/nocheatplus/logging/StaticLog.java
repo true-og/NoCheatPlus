@@ -25,7 +25,6 @@ import fr.neatmonster.nocheatplus.utilities.StringUtil;
 
 /**
  * Static access methods for more or less direct logging using either LogManager
- * (usually INIT or STATUS) or System.out.
  * 
  * @author mc_dev
  *
@@ -97,17 +96,11 @@ public class StaticLog {
     /**
      * 
      * @param streamID
-     *            May get ignored if only the console is available.
      * @param level
      * @param msg
      */
     public static void log(final StreamID streamID, final Level level, final String msg) {
-        if (useLogManager) {
-            NCPAPIProvider.getNoCheatPlusAPI().getLogManager().log(streamID, level, msg);
-        } else {
-            System.out.println("[" + level + "][NoCheatPlus] " + new Date());
-            System.out.println(msg);
-        }
+    	NCPAPIProvider.getNoCheatPlusAPI().getLogManager().log(streamID, level, msg);
     }
 
     /**

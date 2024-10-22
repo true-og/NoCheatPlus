@@ -102,7 +102,6 @@ public class CollideRayVsAABB implements ICollideRayVsAABB {
         final double tMaxX = CollisionUtil.getMaxTimeIncludeEdges(startX, dirX, minX, maxX, tMinX);
         final double tMaxY = CollisionUtil.getMaxTimeIncludeEdges(startY, dirY, minY, maxY, tMinY);
         final double tMaxZ = CollisionUtil.getMaxTimeIncludeEdges(startZ, dirZ, minZ, maxZ, tMinZ);
-        //System.out.println("TIMING: " + tMinX + " " + tMinY + " " + tMinZ + " " + tMaxX + " " + tMaxY + " " + tMaxZ);
         if (!Double.isNaN(tMaxX) && !Double.isNaN(tMaxY) && !Double.isNaN(tMaxZ)) {
             // (Excludes any tMin value to be Double.MAX_VALUE.)
             // Determine if there is overlapping intervals.
