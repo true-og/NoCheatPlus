@@ -1,11 +1,11 @@
-name: ${project.name}
-version: ${project.version}-Updated-${buildDescription}
-description: ${project.description}
+name: NoCheatPlus
+version: '${version}'
+description: Anti-cheating plugin for Minecraft (1.8-1.21, Bukkit/Spigot).
 
 author: NeatMonster
 authors: [asofold, Evenprime, CaptainObvious0, xaw3ep]
-website: ${project.url}
-dev-url: ${project.url}
+website: https://github.com/true-og/NoCheatPlus
+dev-url: https://github.com/true-og/NoCheatPlus
 
 main: ${project.groupId}.${project.artifactId}.${project.name}
 api-version: 1.13
