@@ -7,9 +7,9 @@ authors: [asofold, Evenprime, CaptainObvious0, xaw3ep]
 website: https://github.com/true-og/NoCheatPlus
 dev-url: https://github.com/true-og/NoCheatPlus
 
-main: ${project.groupId}.${project.artifactId}.${project.name}
+main: fr.neatmonster.nocheatplus.NoCheatPlus
 api-version: 1.13
-folia-supported: true
+folia-supported: false
 
 softdepend:
 - ProtocolLib
