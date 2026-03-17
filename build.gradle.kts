@@ -105,7 +105,9 @@ tasks.withType<AbstractArchiveTask>().configureEach { // Ensure reproducible .ja
 tasks.shadowJar {
     archiveFileName.set("NoCheatPlus-${version}.jar")
     archiveClassifier.set("") // Use empty string instead of null.
-    minimize()
+    minimize {
+        exclude(project(":NCPPlugin"))
+    }
 }
 
 tasks.jar { archiveClassifier.set("part") } // Applies to root jarfile only.
