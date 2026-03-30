@@ -204,7 +204,7 @@ project(":NCPCompatProtocolLib") {
         compileOnly("org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT")
         compileOnly(project(":NCPCore"))
         compileOnly(project(":NCPCommons"))
-        compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0-SNAPSHOT")
+        compileOnly(files("${rootProject.projectDir}/libs/ProtocolLib-5.0.jar")) // Import Legacy ProtocolLib API.
     }
 }
 
