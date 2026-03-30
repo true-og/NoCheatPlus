@@ -55,6 +55,64 @@ public class Activation implements IDescriptiveActivation {
     }
 
     /**
+     * Try to extract the numeric version core from a plugin version string,
+     * tolerating common prefixes and suffixes such as "v5.0.0" or
+     * "5.0.0-dev".
+     *
+     * @param version
+     *            Lower case expected.
+     * @return null on failures.
+     */
+    public static String guessUsableVersionString(final String version) {
+        if (version == null) {
+            return null;
+        }
+        // Assume ordinary start.
+        String pV = GenericVersion.collectVersion(version, 0);
+        if (pV != null) {
+            return pV;
+        }
+        // Accept a numeric core followed by a generic suffix such as "-dev".
+        int i = 0;
+        while (i < version.length() && !Character.isDigit(version.charAt(i))) {
+            i++;
+        }
+        if (i < version.length()) {
+            int end = i;
+            boolean numberFound = false;
+            while (end < version.length()) {
+                char c = version.charAt(end);
+                if (Character.isDigit(c)) {
+                    numberFound = true;
+                    end++;
+                }
+                else if (c == '.') {
+                    if (!numberFound) {
+                        break;
+                    }
+                    numberFound = false;
+                    end++;
+                }
+                else {
+                    break;
+                }
+            }
+            if (numberFound) {
+                pV = version.substring(i, end);
+                if (GenericVersion.collectVersion(pV, 0) != null) {
+                    return pV;
+                }
+            }
+        }
+        // Right hand side delimiters.
+        pV = rightSideDelimiters(version);
+        if (pV != null) {
+            return pV;
+        }
+        return null;
+    }
+
+    /**
      * This attempt to transform/parse the plugin version such that the result
      * can be used for comparison with a server version. The plugin is fetched
      * for convenience.
@@ -65,27 +123,7 @@ public class Activation implements IDescriptiveActivation {
     public static String guessUsablePluginVersion(String pluginName) {
         final Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin(pluginName);
         final String version = plugin.getDescription().getVersion().toLowerCase();
-        // Assume ordinary start.
-        String pV = GenericVersion.collectVersion(version, 0);
-        // Right hand side delimiters.
-        if (pV == null) {
-            pV = rightSideDelimiters(version);
-        }
-        // Try skipping initial characters like in "v1.0".
-        if (pV == null) {
-            int i = 0;
-            while (i < version.length() && !Character.isDigit(version.charAt(i))) {
-                i++;
-            }
-            if (i < version.length()) {
-                pV = GenericVersion.collectVersion(version, i);
-                // Right hand side delimiters.
-                if (pV == null) {
-                    pV = rightSideDelimiters(version.substring(i));
-                }
-            }
-        }
-        return pV;
+        return guessUsableVersionString(version);
     }
 
     private final List<IActivation> conditions = new LinkedList<IActivation>();
@@ -501,4 +539,3 @@ public class Activation implements IDescriptiveActivation {
      */
 
 }
-

@@ -15,9 +15,12 @@
 package fr.neatmonster.nocheatplus.test;
 
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import fr.neatmonster.nocheatplus.components.registry.activation.Activation;
 import fr.neatmonster.nocheatplus.compat.versions.GenericVersion;
 import fr.neatmonster.nocheatplus.compat.versions.ServerVersion;
 
@@ -63,6 +66,15 @@ public class TestMinecraftVersion {
         if (res != expectedResult) {
             fail("Comparing " + v1 + " with " + v2 + " should result in " + expectedResult + ", got instead: " + res);
         }
+    }
+
+    @Test
+    public void testGuessUsableVersionString() {
+        assertEquals("5.0.0", Activation.guessUsableVersionString("5.0.0-dev"));
+        assertEquals("5.0.0", Activation.guessUsableVersionString("v5.0.0"));
+        assertEquals("5.0.0", Activation.guessUsableVersionString("build-5.0.0+meta"));
+        assertEquals("4.7.0", Activation.guessUsableVersionString("4.7.0-b123"));
+        assertNull(Activation.guessUsableVersionString("dev-build"));
     }
 
 }
