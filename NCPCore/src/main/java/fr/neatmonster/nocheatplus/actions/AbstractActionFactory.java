@@ -87,7 +87,10 @@ public abstract class AbstractActionFactory <D extends ActionData, L extends Abs
                 } else {
                     final String[] listEntry = s.split("\\s+", 2);
                     vl = Integer.parseInt(listEntry[0]);
-                    def = listEntry[1];
+                    // A bare "vl>N" with no actions after it = clear actions at that
+                    // threshold (consistent with the null-definition handling above).
+                    // Avoids a misleading "Couldn't parse action definition" warning.
+                    def = listEntry.length > 1 ? listEntry[1] : "";
                 }
                 list.setActions(vl, createActions(def.split("\\s+")));
             } catch (final Exception e) {
