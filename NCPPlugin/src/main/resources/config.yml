@@ -401,7 +401,7 @@ checks:
       actions: cancel log:fselfhit:0:5:icf cmdc:kickselfhit:0:5
     speed:
       active: true
-      limit: 16
+      limit: 15
       actions: cancel vl>10 cancel log:fspeed:2:5:i vl>60 cancel log:fspeed:0:5:if
         cmdc:kickattackfrequency:0:10
       shortterm:
@@ -653,8 +653,8 @@ checks:
         half: 8
         one: 15
         two: 30
-        four: 60
-        eight: 95
+        four: 56
+        eight: 88
       improbable:
         weight: 3.0
       actions: cancel vl>10 cancel log:attackfrequency:4:5:i vl>200 cancel log:attackfrequency:0:4:if
