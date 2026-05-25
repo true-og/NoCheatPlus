@@ -870,13 +870,7 @@ public class NoCheatPlus extends JavaPlugin implements NoCheatPlusAPI {
         if (getGenericInstance(ActionFactoryFactory.class) == null) {
             setActionFactoryFactory(null); // Set to default.
         }
-        // Configuration.
-        if (!ConfigManager.isInitialized()) {
-            ConfigManager.init(this, worldDataManager);
-            // Basic setup for exemption (uses CheckType). This is redundant, but should not hurt.
-            NCPExemptionManager.setExemptionSettings(new ExemptionSettings(ConfigManager.getConfigFile()));
-        }
-        // Logging.
+        // Logging must exist before configuration parsing can emit warnings.
         if (logManager == null || logManager.getStreamID(Streams.STATUS.name) != Streams.STATUS) {
             logManager = new BukkitLogManager(this);
             StaticLog.setStreamID(Streams.INIT);
@@ -891,6 +885,12 @@ public class NoCheatPlus extends JavaPlugin implements NoCheatPlusAPI {
                             return NoCheatPlus.this.getRegistryStreamId();
                         }
                     }, "[GenericInstanceRegistry] ");
+        }
+        // Configuration.
+        if (!ConfigManager.isInitialized()) {
+            ConfigManager.init(this, worldDataManager);
+            // Basic setup for exemption (uses CheckType). This is redundant, but should not hurt.
+            NCPExemptionManager.setExemptionSettings(new ExemptionSettings(ConfigManager.getConfigFile()));
         }
     }
 
