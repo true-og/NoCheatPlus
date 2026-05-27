@@ -69,7 +69,18 @@ public class VehicleMorePackets extends Check {
         SetBackEntry newTo = null;
 
         // Take a packet from the buffer.
-        data.vehicleMorePacketsBuffer--;
+        // Exception: riding a boat straight up a water column or a soul-sand
+        // bubble-column elevator legitimately produces a sustained stream of vehicle
+        // moves that outruns the buffer's once-per-second refill, draining it until a
+        // false "too many moves" kick fires. Don't spend buffer on ascending in-water
+        // moves -- mirrors the bubble-column leniency in the vehicle envelope check
+        // (which is the check that would normally excuse this, but it can be disabled).
+        final boolean ascendingInWater = thisMove.yDistance > 0.0
+                && (thisMove.from.inWater || thisMove.to.inWater
+                        || thisMove.from.inBubbleStream || thisMove.to.inBubbleStream);
+        if (!ascendingInWater) {
+            data.vehicleMorePacketsBuffer--;
+        }
 
         if (setBack != null || Folia.isTaskScheduled(data.vehicleSetBackTaskId)){
             // Short version !
