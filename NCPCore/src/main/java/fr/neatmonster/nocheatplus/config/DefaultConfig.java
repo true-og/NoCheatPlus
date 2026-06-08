@@ -665,7 +665,7 @@ public class DefaultConfig extends ConfigFile {
         set(ConfPaths.STRINGS + ".bvisible", start + "tried to interact with a block through a solid obstacle" + end, 1154);
         set(ConfPaths.STRINGS + ".bwrong", start + "tried to break another block than interacted with last" + end, 1154);
         set(ConfPaths.STRINGS + ".captcha", "[player] failed captcha repeatedly" + end, 785);
-        set(ConfPaths.STRINGS + ".chatfast", start + "acted like spamming (message deleted) (IP: &6[ip]&7)" + end, 1154);
+        set(ConfPaths.STRINGS + ".chatfast", start + "acted like spamming (message deleted)" + end, 1154);
         set(ConfPaths.STRINGS + ".chatnormal", start + "seems to be spamming the server chat" + end, 1154);
         set(ConfPaths.STRINGS + ".commands", start + "issued too many commands too quickly" + end, 785);
         set(ConfPaths.STRINGS + ".creativefly", start + "tried to perform a move that deviates from the model (Model: &6[model]&7, Tags: &6[tags]&7)" + end, 1154);

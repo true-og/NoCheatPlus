@@ -274,7 +274,7 @@ public class ViolationData implements IViolationInfo, ActionData {
                 return health == null ? (BridgeHealth.getHealth(player) + "/" + BridgeHealth.getMaxHealth(player)) : health;
             }
             case IP:
-                return player.getAddress().toString().substring(1).split(":")[0];
+                return "<redacted>";
             case PLAYER:
             case PLAYER_NAME:
                 return player.getName();

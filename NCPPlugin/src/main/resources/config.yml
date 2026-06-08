@@ -715,7 +715,7 @@ strings:
     with last &7(&cVL[violations]&7)'
   captcha: '[player] failed captcha repeatedly &7(&cVL[violations]&7)'
   chatfast: '&c[player]&7 failed &c[check]&7: acted like spamming (message deleted)
-    (IP: &6[ip]&7) &7(&cVL[violations]&7)'
+    &7(&cVL[violations]&7)'
   chatnormal: '&c[player]&7 failed &c[check]&7: seems to be spamming the server chat
     &7(&cVL[violations]&7)'
   commands: '&c[player]&7 failed &c[check]&7: issued too many commands too quickly
