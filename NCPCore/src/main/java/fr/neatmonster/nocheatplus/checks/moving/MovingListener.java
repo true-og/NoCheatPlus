@@ -1567,8 +1567,8 @@ public class MovingListener extends CheckListener implements TickListener, IRemo
         // Default margin: Allow slightly less than the previous speed.
         final double defaultAmount = lastMove.hDistance * (1.0 + Magic.FRICTION_MEDIUM_AIR) / 2.0;
         // Test for exceptions.
-        if (Bridge1_9.isWearingElytra(player) && lastMove.modelFlying != null && lastMove.modelFlying.getId().equals(MovingConfig.ID_JETPACK_ELYTRA)) {
-            // Still elytra move, not forcing CreativeFly check, just pass the res to velocity
+        if (lastMove.modelFlying != null && MovingConfig.ID_JETPACK_ELYTRA.equals(lastMove.modelFlying.getId())) {
+            // Preserve momentum from the last elytra move, even if the elytra was removed or broke in midair.
             final double[] res = CreativeFly.guessElytraVelocityAmount(player, thisMove, lastMove, data);
             //data.addVerticalVelocity(new SimpleEntry(lastMove.yDistance < -0.1034 ? (lastMove.yDistance * Magic.FRICTION_MEDIUM_AIR + 0.1034) 
             //                                        : lastMove.yDistance, cc.velocityActivationCounter));
