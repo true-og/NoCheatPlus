@@ -2,7 +2,8 @@
 # Rebased on Updated-NCP 3.17.1-SNAPSHOT-Updated for Minecraft 1.19.4
 # Dependencies:
 # ProtocolLib https://github.com/true-og/ProtocolLib
-savebackconfig: true
+# false so NCP never rewrites/reorders/strips comments from this file; the tracked config.yml resource stays canonical.
+savebackconfig: false
 logging:
   active: true
   maxqueuesize: 5000
@@ -345,7 +346,8 @@ checks:
     yawrate:
       active: true
     angle:
-      active: default
+      # Disabled: LightningGrim MultiInteractA/B + Hitboxes + Aim own killaura geometry. NCP angle is false-prone on crowds/sweep hits.
+      active: false
       threshold:
         average_move: 100
         average_time: 150
@@ -384,7 +386,8 @@ checks:
       active: default
       actions: vl>2 cancel vl>10 log:noswing:2:5:i cancel
     reach:
-      active: true
+      # Disabled: LightningGrim owns reach (precise hitbox + post-packet). NCP fight.reach is heuristic and would double-flag / false on laggy Via clients.
+      active: false
       survivaldistance: 4.0
       penalty: 250
       reduce: true
@@ -471,7 +474,8 @@ checks:
   moving:
     active: true
     creativefly:
-      active: false
+      # NCP owns flight (elytra/levitation/riptide); ignoreallowflight+ignorecreative skip /fly and /gmc so flight-accel mods still work there.
+      active: true
       ignoreallowflight: true
       ignorecreative: true
       model:
@@ -531,7 +535,8 @@ checks:
           strict: false
       actions: vl>800 cancel vl>1200 cancel
     morepackets:
-      active: default
+      # Disabled: LightningGrim TimerA owns timer/move-rate (transaction-balanced, far more precise than NCP morepackets).
+      active: false
       seconds: 6
       epsideal: 20
       epsmax: 22
@@ -576,6 +581,7 @@ checks:
           - tpyes
           - tphere
     survivalfly:
+      # NCP owns survival ground/air movement (bhop, speed, step, jesus, spider). Grim Simulation setback is disabled (config.yml) so the two don't fight.
       active: true
       stepheight: true
       extended:
@@ -633,7 +639,8 @@ checks:
       schedulesetbacks: false
       schedulesetpassenger: false
       morepackets:
-        active: default
+        # Disabled: LightningGrim VehicleTimer owns vehicle timer/move-rate.
+        active: false
         actions: cancel vl>2 log:morepackets:2:5:if cancel vl>100 cancel log:morepackets:1:2:if
           cmdc:kickpackets:2:10
       envelope:
