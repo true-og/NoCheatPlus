@@ -31,7 +31,6 @@ import fr.neatmonster.nocheatplus.compat.AlmostBoolean;
 import fr.neatmonster.nocheatplus.compat.BridgeHealth;
 import fr.neatmonster.nocheatplus.components.config.value.OverrideType;
 import fr.neatmonster.nocheatplus.components.registry.feature.INotifyReload;
-import fr.neatmonster.nocheatplus.logging.StaticLog;
 import fr.neatmonster.nocheatplus.players.DataManager;
 import fr.neatmonster.nocheatplus.players.IPlayerData;
 import fr.neatmonster.nocheatplus.stats.Counters;
@@ -65,9 +64,8 @@ public class FastConsume extends Check implements Listener, INotifyReload {
         // TODO: Do this kind of thing via registries later on.
         //ConfigManager.setForAllConfigs(ConfPaths.INVENTORY_INSTANTEAT_CHECK, false);
         NCPAPIProvider.getNoCheatPlusAPI().getWorldDataManager().overrideCheckActivation(
-                CheckType.INVENTORY_INSTANTEAT, AlmostBoolean.NO, 
+                CheckType.INVENTORY_INSTANTEAT, AlmostBoolean.NO,
                 OverrideType.PERMANENT, true);
-        StaticLog.logInfo("Inventory checks: FastConsume is available, disabled InstantEat.");
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
