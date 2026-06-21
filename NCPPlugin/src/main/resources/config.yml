@@ -52,7 +52,7 @@ permissions:
 protection:
   plugins:
     hide:
-      active: true
+      active: false
       nopermission:
         message: '&cI''m sorry, but you do not have permission to perform this command.
           Please contact the server administrators if you believe that this is in
@@ -201,12 +201,12 @@ checks:
       exclusions:
       - undo
       - redo
+      - msg
+      - tell
       handleaschat:
       - me
-      - msg
       - emsg
       - essentials:msg
-      - tell
       - etell
       - essentials:tell
       - say
