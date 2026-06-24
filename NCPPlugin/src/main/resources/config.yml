@@ -311,8 +311,8 @@ checks:
     improbable:
       active: true
       level: 198
-      actions: cancel vl>4 log:improbable:0:6:i cancel vl>520 cancel vl>600 cancel
-        vl>720 cancel vl>1200 cancel
+      actions: cancel vl>6 log:improbable:0:6:i cancel vl>620 cancel vl>720 cancel
+        vl>840 cancel vl>1400 cancel
     invulnerable:
       active: true
       triggers:
@@ -358,7 +358,7 @@ checks:
       active: true
       falldistance: 0.075
       falldistleniency: 9.0E-4
-      actions: cancel log:critical:5:10:icf
+      actions: cancel vl>2 log:critical:5:10:icf
     direction:
       active: false
       strict: true
@@ -404,12 +404,12 @@ checks:
       actions: cancel log:fselfhit:0:5:icf cmdc:kickselfhit:0:5
     speed:
       active: true
-      limit: 15
+      limit: 20
       actions: cancel vl>10 cancel log:fspeed:2:5:i vl>60 cancel log:fspeed:0:5:if
         cmdc:kickattackfrequency:0:10
       shortterm:
         ticks: 7
-        limit: 5
+        limit: 7
       improbable:
         feedonly: false
         weight: 1.0
@@ -449,7 +449,7 @@ checks:
       duration: 1.5
       whitelist: false
       items: []
-      actions: cancel vl>25 log:fastconsume:2:5:if cancel vl>35
+      actions: cancel vl>30 log:fastconsume:2:5:if cancel vl>40
     inventorymove:
       active: false
       disable_creative: true
