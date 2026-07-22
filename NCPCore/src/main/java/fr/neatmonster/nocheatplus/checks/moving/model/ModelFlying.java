@@ -69,7 +69,7 @@ public class ModelFlying {
      */
     private boolean scaleSlowfallingEffect = false;
 
-     /**
+    /**
      * Allow an extra amount to ascend speed, scaling with the riptiding effect
      * level.
      */
@@ -118,6 +118,14 @@ public class ModelFlying {
         scaleLevitationEffect(defaults.getScaleLevitationEffect()); // Config?
         scaleSlowfallingEffect(defaults.getScaleSlowfallingEffect());
         scaleRiptidingEffect(defaults.getScaleRiptidingEffect());
+
+        // Only the resolved creative game-mode model gets the extra allowance.
+        // The first creative model is the defaults template; doubling that would
+        // also leak into survival/adventure allow-flight models.
+        if ("gamemode.creative".equals(id) && defaults.getId() != null) {
+            horizontalModSpeed(horizontalModSpeed * 2.0);
+            verticalAscendModSpeed(verticalAscendModSpeed * 2.0);
+        }
     }
 
     /**
@@ -215,7 +223,6 @@ public class ModelFlying {
     public boolean getScaleRiptidingEffect() {
         return scaleRiptidingEffect;
     }
-
 
     public ModelFlying horizontalModSpeed(double horizontalModSpeed) {
         checkLocked();
