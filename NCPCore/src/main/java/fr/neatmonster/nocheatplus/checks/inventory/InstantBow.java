@@ -29,7 +29,7 @@ import fr.neatmonster.nocheatplus.utilities.TickTask;
  */
 public class InstantBow extends Check {
 
-    private static final float maxTime = 800f;
+    private static final float maxTime = 750f;
 
     /**
      * Instantiates a new instant bow check.
