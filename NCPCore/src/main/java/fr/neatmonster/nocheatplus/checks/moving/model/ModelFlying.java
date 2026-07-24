@@ -120,11 +120,11 @@ public class ModelFlying {
         scaleRiptidingEffect(defaults.getScaleRiptidingEffect());
 
         // Only resolved creative and spectator game-mode models get the extra allowance.
-        // The first creative model is the defaults template; doubling that would also
+        // The first creative model is the defaults template; multiplying that would also
         // leak into survival/adventure allow-flight models.
         if (("gamemode.creative".equals(id) && defaults.getId() != null) || "gamemode.spectator".equals(id)) {
-            horizontalModSpeed(horizontalModSpeed * 2.0);
-            verticalAscendModSpeed(verticalAscendModSpeed * 2.0);
+            horizontalModSpeed(horizontalModSpeed * 4.0);
+            verticalAscendModSpeed(verticalAscendModSpeed * 4.0);
         }
     }
 
