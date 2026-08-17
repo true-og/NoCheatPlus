@@ -358,7 +358,8 @@ checks:
       active: true
       falldistance: 0.075
       falldistleniency: 9.0E-4
-      actions: cancel vl>2 log:critical:5:10:icf
+      # No threshold-0 cancel: modern clients through ViaVersion can flag legit jump-crits, and cancel voids the whole hit. Sustained cheating still cancels past VL 20.
+      actions: log:critical:5:10:i vl>20 cancel log:critical:0:10:icf
     direction:
       active: false
       strict: true
@@ -445,7 +446,8 @@ checks:
       active: true
       actions: log:instanteat:2:5:i cancel
     fastconsume:
-      active: true
+      # Off: NCP force-disables this check permanently on 1.9+ servers anyway (InventoryConfig), and the lazy-init race lets it fire once, cancelling a legit meal via an off-hand interact wiping the eat timer.
+      active: false
       duration: 1.5
       whitelist: false
       items: []
@@ -548,14 +550,16 @@ checks:
       actions: cancel vl>2 cancel log:morepackets:10:9:i vl>100 cancel log:morepackets:0:2:ifc
         cmdc:kickpackets:0:10
     nofall:
-      active: false
+      # Must stay active: fight.critical falldist_mismatch compares against this check's fall tracker, and anticriticals only runs inside it. dealdamage stays false so it never deals damage itself.
+      active: true
       dealdamage: false
       skipallowflight: false
       resetonviolation: true
       resetonteleport: false
       resetonvehicle: false
       anticriticals: true
-      actions: log:nofall:0:7:i cancel vl>666 cancel vl>12 cancel
+      # Log-only: dealdamage is false, so cancel actions here would only distort vanilla fall damage.
+      actions: log:nofall:0:7:i
     passable:
       active: false
       actions: log:passable:0:7:i vl>500 cancel
