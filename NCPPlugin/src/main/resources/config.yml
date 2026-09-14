@@ -118,7 +118,7 @@ checks:
       actions: cancel vl>200 cancel log:bdirection:1:10:if cmdc:kickillegalblockinteract:1:5
     reach:
       active: true
-      actions: cancel log:breach:5:6:i
+      actions: vl>1 cancel log:breach:5:6:i
     speed:
       active: true
       interval: 2000
@@ -138,7 +138,7 @@ checks:
       actions: cancel vl>10 log:bautosign:0:3:if cancel
     direction:
       active: default
-      actions: cancel vl>50 log:bdirection:0:8:i cancel
+      actions: vl>2 cancel vl>50 log:bdirection:0:8:i cancel
     fastplace:
       active: true
       limit: 25
@@ -152,7 +152,7 @@ checks:
         vl>80 cancel log:fastplace:0:10:if cmdc:kickfastplace:1:10
     reach:
       active: true
-      actions: cancel vl>5 log:breach:0:8:i cancel
+      actions: vl>2 cancel vl>5 log:breach:0:8:i cancel
     noswing:
       active: false
       exceptions:
