@@ -1,7 +1,7 @@
 # Custom NCP Config 3.3-OG created by CaptainObvious0, forked by Xinepeng, then forked by NotAlexNoyle.
 # Rebased on Updated-NCP 3.17.1-SNAPSHOT-Updated for Minecraft 1.19.4
 # Dependencies:
-# ProtocolLib https://github.com/true-og/ProtocolLib
+# ProtocolLib https://git.trueog.net/trueog/ProtocolLib
 # false so NCP never rewrites/reorders/strips comments from this file; the tracked config.yml resource stays canonical.
 savebackconfig: false
 logging:
