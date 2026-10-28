@@ -4,8 +4,8 @@ description: Anti-cheating plugin for Minecraft (1.8-1.21, Bukkit/Spigot).
 
 author: NeatMonster
 authors: [asofold, Evenprime, CaptainObvious0, xaw3ep]
-website: https://github.com/true-og/NoCheatPlus
-dev-url: https://github.com/true-og/NoCheatPlus
+website: https://git.trueog.net/trueog/NoCheatPlus
+dev-url: https://git.trueog.net/trueog/NoCheatPlus
 
 main: fr.neatmonster.nocheatplus.NoCheatPlus
 api-version: 1.13
